@@ -9,7 +9,7 @@ int main() {
   int num=1+rand()%(101-1);
 
   
-    LinkedList list(100);
+    ListaLigada list(100);
     cout<<"tiempo ejecucion insert_left para un vector de capacidad b= "<<100<<endl;
     auto start1=chrono::system_clock::now();
     for(int i=0;i<100;i++){
@@ -30,7 +30,7 @@ int main() {
     cout<<duration11.count()<<"ms"<<endl;
   
   
-    LinkedList list2(10000);
+    ListaLigada list2(10000);
     cout<<"tiempo ejecucion insert_left para un vector de capacidad b= "<<10000<<"y 10000 de datos"<<endl;
     auto start2=chrono::system_clock::now();
     for(int i=0;i<10000;i++){
@@ -50,7 +50,7 @@ int main() {
     cout<<duration22.count()<<"ms"<<endl;
    
  
-    LinkedList list3(100000);
+    ListaLigada list3(100000);
     cout<<"tiempo ejecucion insert_left para un vector de capacidad b= "<<10000<<"y 100000 de datos"<<endl;
     auto start3=chrono::system_clock::now();
     for(int i=0;i<100000;i++){
