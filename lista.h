@@ -2,71 +2,65 @@
 
 using namespace std;
 
-struct Nodo {
+class Nodo {
 public:
     int dato;
     Nodo* siguiente;
-
-    Nodo(int dato) {
-        this->dato = dato;
-        this->siguiente = NULL;
+    Nodo(int v) {
+        dato = v;
+        siguiente = NULL;
     }
 };
 
-class LinkedList {
+class ListaLigada {
 private:
-  int capacidad;
-  int size;  
   Nodo* frente;
+  int capacidad;
+  int iterador;
 
 public:
-    LinkedList(int b) {
-      capacidad=b;
-      frente = NULL;
-      size=0;
-    }
-
-    int getsize(){
-      return size;
+    
+    ListaLigada(int b) {
+        frente = NULL;
+        capacidad=b;
+        iterador=0;
     }
 
     void insert_left(int v) {
-        if(size-1<=capacidad){
-          Nodo* aux = new Nodo(v);
-          aux->siguiente = frente;
-          frente = aux;
-          size++;
-        }
-        else{
-          throw "outofbounds";
-        }
-    }
-
-    void insert_right(int dato) {
-      if(size-1<=capacidad){
-        Nodo* aux = new Nodo(dato);
-        if (frente == NULL) {
-            frente = aux;
-          
-        }
-        Nodo* actual = frente;
-        while (actual-> siguiente!= NULL) {
-            actual = actual->siguiente;
-        }
-        actual->siguiente = aux;
-        size++;
+      if(iterador<=capacidad){
+        Nodo* aux = new Nodo(v);
+        aux->siguiente = frente;
+        frente = aux;
       }
       else{
-        throw "outofbounds";
+        throw out_of_range("index out of range");
       }
+      iterador++;
     }
 
-    void print_list() {
+    void insert_right(int v) {
+      if(iterador<=capacidad){
+        Nodo* aux = new Nodo(v);
+        if (frente == NULL) {
+            frente = aux;
+        }
+        else {
+            Nodo* actual = frente;
+            while (actual->siguiente != nullptr) {
+                actual = actual->siguiente;
+            }
+            actual->siguiente = aux;
+        }
+      }
+      else{
+        throw out_of_range("index out of range");
+      }
+    }
+    void print() {
         Nodo* actual = frente;
         while (actual != NULL) {
             cout << actual->dato << " ";
             actual = actual->siguiente;
         }
-        cout << endl;
     }
 };
