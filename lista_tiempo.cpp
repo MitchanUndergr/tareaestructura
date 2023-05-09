@@ -9,7 +9,7 @@ int main() {
   int num=1+rand()%(101-1);
 
   
-    LinkedList list(99);
+    LinkedList list(100);
     cout<<"tiempo ejecucion insert_left para un vector de capacidad b= "<<100<<endl;
     auto start1=chrono::system_clock::now();
     for(int i=0;i<100;i++){
